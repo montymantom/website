@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Introduction to Metasploit</title>
+    <link rel="stylesheet" href="post-styles.css" />
+    <script
+      src="https://kit.fontawesome.com/d996efb836.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links"> Code </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/tech.html" class="navbar__links"> Cyber Security </a>
+          </li>
+          <li class="navbar__bt">
+            <a href="/" class="button">Latest Post</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="main__container">
+        <div class="main__content">
+          <h1>An Introduction to Metasploit</h1>
+          <p>A glimpse into the world of malware.</p>
+        </div>
+        <div class="main__img--container">
+          <img src="images/caricature.png" alt="pic" id="main__img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="paragraph">
+      During my studies for the COMPTIA Security+ certification, I came across
+      something called Metasploit. Metasploit is described as a computer
+      security project that provides information about security vulnerabilites,
+      aids in pentesting and IDS (intrusion detection system) signature
+      development.
+    </div>
+    <div class="paragraph">
+      My interest in the field of cyber security has been mainly on the blue
+      team but I figured it is always a good opportunity to learn and this
+      seemed pretty interesting. As such, I went to work learning about
+      Metasploit the only way I know how - downloading the application and
+      poking around.
+    </div>
+    <div class="heading">Installation</div>
+    <div class="paragraph">
+      The
+      <a
+        href="https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html"
+        >Metasploit Wiki</a
+      >
+      suggested I install on Linux. I jumped at the opportunity - this allows me
+      to fire up a virtual machine, which is always fun. Once I got through the
+      copy-pasting of installation commands, we were ready to go. The start-up
+      screen was funny and nerdy - kinda what I was expecting.
+    </div>
+    <div class="caption">
+      <img src="metasploit_images/landing.png" alt="pic1" id="post__img" />
+      Kinnnddaaa funny, I suppose. Think I'm definitely missing an inside joke.
+    </div>
+    <div class="paragraph">
+      My exposure to Metasploit extends to getting a question about it wrong in
+      a past paper, and that's it. But that's why we do these things :).
+    </div>
+    <div class="paragraph">
+      The first tip informed me that Search can apply complex filters such as
+      search cve:2009 type:exploit.
+    </div>
+    <div class="paragraph">And so I typed in search cve:2009 type:exploit.</div>
+    <div class="caption">
+      <img src="metasploit_images/search.png" alt="pic" id="landscape__img" />
+      Results of my first search on Metasploit
+    </div>
+    <div class="paragraph">
+      The resulting search appeared to be a list of vulnerabilities along with
+      some details about them. In order to go into a bit more granular detail, I
+      chose a vulnerability (one that was ranked excellent, as we don't settle
+      for anything less on this blog) and typed in info [#].
+    </div>
+    <div class="caption">
+      <img src="metasploit_images/search.png" alt="pic" id="landscape__img" />
+      A bit more detail about my chosen vulnerability
+    </div>
+    <div class="paragraph">
+      We appear to be dealing with the Symantec Center Alert Management System
+      Arbitrary Command Execution. This alert management system is prone to a
+      remote command-injection vulnerability because the application fails to
+      properly sanitise user-supplied input. Let's break down a some of the
+      terminology from this description:
+    </div>
+    <div class="paragraph">
+      Remote command-injection: As mentioned previously, incorrectly sanitised
+      user input can cause a system to do something unwanted. In this case, it
+      allows a remote command-injection. This allows the attacker to execute a
+      command within the system - naturally something the administrator would
+      want to avoid.
+    </div>
+    <div class="paragraph">
+      Reading through this description, I also realised that Metasploit is not
+      providing a list of vulnerabilities. It takes this a step further and
+      provides a list of exploits. Exploits take advantage of vulnerabilities.
+      This struct me as being a little more sinister. Of course, these are to be
+      used in pentesting and it is important that this sort of information is
+      publically available for testing purposes. But it still felt a little...
+      evil.
+    </div>
+    <div class="heading">Conclusion</div>
+    <div class="paragraph">
+      This was a brief introduction to Metasploit. All I really did was download
+      it, run a simple search function and go into a bit more detail on one of
+      the exploits provided. However, this was powerful in of itself - to have
+      access to this sort of information within a few taps of the keyboard was
+      pretty daunting. I think Metasploit has a lot more to offer and I am
+      excited to share these features with you once I have learned them myself.
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__link--wrapper">
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+          </div>
+          <p class="website__rights">NEXT 2020. All rights reserved</p>
+          <div class="social__icons">
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

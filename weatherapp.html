@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="post-styles.css" />
+    <script
+      src="https://kit.fontawesome.com/d996efb836.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links"> Code </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/tech.html" class="navbar__links"> Cyber Security </a>
+          </li>
+          <li class="navbar__bt">
+            <a href="/" class="button">Latest Post</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="main__container">
+        <div class="main__content">
+          <h1>Weather App</h1>
+          <p>
+            A web application to display the weather using Javascript, HTML and
+            CSS.
+          </p>
+        </div>
+        <div class="main__img--container">
+          <img src="images/caricature.png" alt="pic" id="main__img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="paragraph">
+      Recently I have been interested in solutions-engineer style roles. These
+      are appealing as they are client-facing and require one to work with
+      clients in order to scope a solution. However, they are also technical and
+      demand the ability to be able to code. Generally, this coding is slanted
+      to the front-end with Javascript, HTML and CSS. I wanted to use this
+      opportunity to sharpen my skills in this regard.
+    </div>
+    <div class="caption">
+      <img src="weatherapp-images/weather-app.png" alt="pic1" id="post__img" />
+      The final product.
+    </div>
+    <div class="heading">The Project</div>
+    <div class="paragraph">
+      This project will walk through the process of designing a weather app laid
+      out by
+      <a href="https://www.youtube.com/watch?v=KqZGuzrY9D4">Code Explained</a>.
+      I will look at interesting elements of the project, pointing out what is
+      going on and how each step works.
+    </div>
+    <div class="paragraph">
+      This project was of interest for me for a few reasons:
+    </div>
+    <div class="paragraph">
+      Getting to grips with Javascript, HTML and CSS and how they all interact
+      with one another, creating a dynamic webpage which updates based on
+      information and using an API call in order to pull live information.
+    </div>
+    <div class="heading">The HTML</div>
+    <div class="paragraph">
+      The HTML code dictates what the user is going to see. The preamble is as
+      follows:
+    </div>
+    <pre class="green">
+      <code class="HTML">
+        &lt;meta charset="UTF-8"&gt;
+        &lt;title&gt;Weather App - JavaScript&lt;/title&gt;
+        &lt;link rel="stylesheet" href="font/Rimouski.css"&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+    </code>
+    </pre>
+    <div class="paragraph">
+      This simply allows us to declare the title of the page as well as some of
+      the styling elements - the font and the location of the CSS file.
+    </div>
+    <div class="paragraph">Into the body of the HTML:</div>
+    <pre class="green">
+      <code class="HTML">
+        &lt;div class="container"&gt;
+          &lt;div class="app-title"&gt;
+              &lt;p&gt;Weather&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="notification"&gt; &lt;/div&gt;
+          &lt;div class="weather-container"&gt;
+              &lt;div class="weather-icon"&gt;
+                  &lt;img src="icons/unknown.png" alt=""&gt;
+              &lt;/div&gt;
+              &lt;div class="temperature-value"&gt;
+                  &lt;p&gt;- °&lt;span&gt;C&lt;/span&gt;&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class="temperature-description"&gt;
+                  &lt;p&gt; - &lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class="location"&gt;
+                  &lt;p&gt;-&lt;/p&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+    </code>
+    </pre>
+    <div class="paragraph">
+      Which is ordered as follows: we have an overarching container which has a
+      title, a notification division and a weather container. Within this
+      weather container we have various divisions:
+    </div>
+    <div class="paragraph">
+      Icons for displaying the weather visually, the value of the temperature in
+      degrees, a description of the temperature and the location of which we are
+      checking the temperature.
+    </div>
+    <div class="paragraph">
+      And that is it! The final division is a called to our Javascript file
+      app.js. This file will run the code in the background which will
+      ultimately populate the page.
+    </div>
+    <div class="heading">The JavaScript</div>
+    <div class="paragraph">
+      As mentioned, the final division in our HTML file is a call to run our
+      app.js file. This file contains Javascript functions which will run in
+      order to update the Javascript code. I will not go through the whole file
+      but will look at some interesting functions.
+    </div>
+    <div class="heading">
+      <h2>displayWeather()</h2>
+    </div>
+    <pre class="green">
+      <code class="js">
+        function displayWeather(){
+          iconElement.innerHTML = `&lt;img src="icons/${weather.iconId}.png"/&gt;`;
+          tempElement.innerHTML = `${weather.temperature.value}°&lt;span>C&lt;/span&gt;`;
+          descElement.innerHTML = weather.description;
+          locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+      }
+    </code>
+    </pre>
+    <div class="paragraph">
+      displayWeather, as the title suggests, is a function to update our app in
+      order to (you guessed it) display the weather. What I found most
+      interesting is the innerHTML functions which allows one to update the
+      index.html from the Javascript file. Being a newbie to Javascript and
+      HTML, this was huge for me.
+    </div>
+    <div class="paragraph">
+      I am comfortable writing code but HTML seemed a bit daunting - to be able
+      to leverage the computational advanages of code when designing a web page
+      was a massive 'A-HA!' moment for me.
+    </div>
+    <div class="paragraph">
+      iconElement allows us to update the weather icon using our icon pack. This
+      means the weather icon is dynamic - it updates based on information.
+    </div>
+    <div class="paragraph">
+      The same is for the rest of the lines of code. We determine their values
+      and then update the HTML accordingly. Just how we determine their values
+      is from an API call to a weather website - OpenWeather Map. The function
+      to make the API call is probably the thing that interested me most about
+      the project. Let's take a look:
+    </div>
+    <div class="heading">
+      <h2>getWeather(latitude, longitude)</h2>
+    </div>
+    <pre class="green">
+      <code class="js">
+        function getWeather(latitude, longitude){
+          let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&
+          lon=${longitude}&appid=${key}`;
+          
+          fetch(api)
+              .then(function(response){
+                  let data = response.json();
+                  return data;
+              })
+              .then(function(data){
+                  weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+                  weather.description = data.weather[0].description;
+                  weather.iconId = data.weather[0].icon;
+                  weather.city = data.name;
+                  weather.country = data.sys.country;
+              })
+              .then(function(){
+                  displayWeather();
+              });
+      }
+    </code>;
+    </pre>
+    <div class="paragraph">
+      In order to make the API call we use the fetch function with the API URL
+      as input. What you will notice is that the call is also dynamic - the
+      latitude, longitude and key are all variables for our Javascript file
+      (hence why they are wrapped in '${...}'). The latitude and longitude
+      determine our position, meaning the weather is reflecting a specific
+      location. The key is our API key, which can be generated on the
+      OpenWeather Map website. This allows us to interact with their API and
+      retrieve the weather.
+    </div>
+    <div class="paragraph">
+      We use fetch in order to access the weather data required. This will be
+      stored in a JSON file which we then store as the data variable. Once this
+      has been returned, we can manipulate it and immediately feed it into a new
+      function.
+    </div>
+    <div class="paragraph">
+      This new function updates our variables in the Javascript file -
+      temperature value, temperature description, the icon and the location. On
+      the right side of all the equals signs you will see data.weather[0] or
+      data.main or something of the sort. What this is doing is accessing our
+      data variable which, if you recall, is the information that we are pulling
+      from the GetWeather application. What this means is that the information
+      we are updating our variables with is live.
+    </div>
+    <div class="paragraph">
+      I think that's pretty awesome - it is a living, dynamic dataset we are
+      able to access with a few keystrokes!
+    </div>
+    <div class="paragraph">
+      Finally we run our displayWeather() function defined earlier in order to
+      update our HTML code with this fresh, dynamic information.
+    </div>
+    <div class="heading">
+      <h2>Geolocation</h2>
+    </div>
+    <div class="paragraph">
+      Finally, in order to get this code to run, the file simply checks whether
+      geolocation is enabled in the browser.
+    </div>
+    <pre class="green">
+      <code class="js">
+        if('geolocation' in navigator){
+          navigator.geolocation.getCurrentPosition(setPosition, showError);
+      }else{
+          notificationElement.style.display = "block";
+          notificationElement.innerHTML = "&lt;p&gt;Browser doesn't Support Geolocation&lt;/p&gt;";
+      }
+    </code>;
+    </pre>
+    <div class="paragraph">
+      If it is not, a notification pops up that the brower does not support
+      Geolocation.
+    </div>
+    <div class="paragraph">
+      If Geolocation is enabled, the getCurrentPosition function is triggered.
+      This sets off a series of nested functions which ultimately allows the
+      code to run - we retrieve the live weather information and our HTML - and
+      ultimately the web page - is updated.
+    </div>
+    <div class="heading">Conclusion</div>
+    <div class="paragraph">
+      Ultimately, this project was not demonstrating my ability to create
+      something using Javascript and HTML. This was a learning experience for me
+      and a chance to cut my teeth with the languages, particularly in making an
+      API call.
+    </div>
+    <div class="paragraph">
+      I have thoroughly enjoyed my brushes with the front-end and look forward
+      to bringing more projects to you going forward.
+    </div>
+    <div class="paragraph">
+      The source code can be found
+      <a href="https://github.com/CodeExplainedRepo">here.</a>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__link--wrapper">
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+          </div>
+          <p class="website__rights">NEXT 2020. All rights reserved</p>
+          <div class="social__icons">
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

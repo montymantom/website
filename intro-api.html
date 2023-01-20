@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXT website</title>
+    <link rel="stylesheet" href="post-styles.css" />
+    <script
+      src="https://kit.fontawesome.com/d996efb836.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links"> Code </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/tech.html" class="navbar__links"> Cyber Security </a>
+          </li>
+          <li class="navbar__bt">
+            <a href="/" class="button">Latest Post</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="main__container">
+        <div class="main__content">
+          <h1>What is an API?</h1>
+          <p>An introduction to the Application Programming Interface.</p>
+        </div>
+        <div class="main__img--container">
+          <img src="images/caricature.png" alt="pic" id="main__img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="paragraph">
+      APIs are all about communication. An API allows for different software
+      applications to interact with one another and is often used in the context
+      of data. This is particularly useful in the case of a third-party
+      application accessing data.
+    </div>
+    <div class="paragraph">
+      This post will establish a number of building blocks required to explain
+      what an API is and what it does, before putting these together to form the
+      big picture.
+    </div>
+    <div class="heading">What is REST?</div>
+    <div class="paragraph">
+      Representational State Transfer (REST) is a set of constraints applied to
+      web architecture and services. A RESTful API adheres to the constraints of
+      REST, thus it is a means of standardising an API.
+    </div>
+    <div class="paragraph">
+      REST APIs use the HTTP methods in order to execute requests.
+    </div>
+    <div class="paragraph">
+      HTTP Methods HTTP methods are ways of interacting with data with HTTP
+      requests. The methods are: GET - Used to retrieve information from a
+      server PUT - Updating existing data on a server POST - Sends new data to a
+      server DELETE - Removes data from a server
+    </div>
+    <div class="paragraph">
+      One important concept to grasp about an API which helped to make it
+      `click' for me is the following: an API allows for communication with
+      systems where internal access to the system is not possible. Interaction
+      occurs at the API layer. Of course, there will be many use cases where an
+      API is preferred even when there is internal access, but for simplicity it
+      is helpful to think in the way I stated.
+    </div>
+    <div class="heading">Endpoints</div>
+    <div class="paragraph">
+      A RESTful API is generally comprised of endpoints. Endpoints will
+      represent a particular function. This is easy to imagine when it comes to
+      a web application - an endpoint may be to generate an order or to post a
+      message. Endpoints are accessed via the HTTP methods to manipulate or
+      retrieve data.
+    </div>
+    <div class="paragraph">
+      If you do not supply the correct inputs at the endpoint, your request will
+      not be successful.
+    </div>
+
+    <div class="heading">Putting it all togetger</div>
+    <div class="paragraph">
+      APIs are a set of rules that allow software applications to communicate
+      with one another. REST APIs are governed by specific restrictions that
+      allow for standardised use. RESTful APIs make use of the HTTP protocol -
+      this means they are flexible and can be used by just about any programming
+      language.
+    </div>
+    <div class="paragraph">
+      When you think of an API, think 'Rules of Engagement'.
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__link--wrapper">
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+          </div>
+          <p class="website__rights">NEXT 2020. All rights reserved</p>
+          <div class="social__icons">
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

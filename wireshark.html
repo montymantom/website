@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wireshark Packet Capture</title>
+    <link rel="stylesheet" href="post-styles.css" />
+    <script
+      src="https://kit.fontawesome.com/d996efb836.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links"> Code </a>
+          </li>
+          <li class="navbar__item">
+            <a href="/tech.html" class="navbar__links"> Cyber Security </a>
+          </li>
+          <li class="navbar__bt">
+            <a href="/" class="button">Latest Post</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main">
+      <div class="main__container">
+        <div class="main__content">
+          <h1>Wireshark Packet Capture</h1>
+          <p>A first hack at networking</p>
+        </div>
+        <div class="main__img--container">
+          <img src="images/caricature.png" alt="pic" id="main__img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="paragraph">
+      I have begun venturing into the exciting world of cyber security, and have
+      recently received my COMPTIA Network+ certification. Of course, there is
+      no better way to get to know something than through experience and hence I
+      wanted to go through a packet capture in order to test my understanding of
+      networking (and perhaps teach the reader a thing or two).
+    </div>
+    <div class="paragraph">
+      The application I used for the capture was Wireshark. Wireshark is a
+      free-to-use protocol analyser and essentially allows you to see what's
+      going on in your network.
+    </div>
+    <div class="paragraph">
+      Once Wireshark was downloaded, I selected `Wi-fi' as the interface of
+      choice.
+    </div>
+    <div class="paragraph">Click Enter:</div>
+    <div class="paragraph">
+      Immediately the logs begin to fill and I click Stop after about three
+      seconds, still enough time for about 30 packets to be captured. I was a
+      little surprised by this as I did not have any browser tabs open, or any
+      other applications for that matter. I selected a packet at random to
+      analyse.
+    </div>
+    <div class="caption">
+      <img src="wireshark-images/row.png" alt="pic1" id="post__img1" />
+      Packet captured by Wireshark
+    </div>
+    <div class="paragraph">
+      Let's go through the packet column-by-column to see what we're working
+      with.
+    </div>
+    <div class="heading">No.</div>
+    <div class="paragraph">
+      This is simply the number of the packet, started from the beginning of the
+      packet capture. So when we hit `capture' initially, the first packet that
+      was captured would have been no.1, the second would have been no.2 and so
+      forth.
+    </div>
+    <div class="heading">Time</div>
+    <div class="paragraph">
+      This the time taken from the beginning of the packet capture. As you can
+      see, we were only 2s in to the capture and were already on the 21st
+      packet!
+    </div>
+    <div class="heading">Source</div>
+    <div class="paragraph">
+      This is the IP address of the source of the packet. I have blanked out the
+      final two bytes, but this was in the usual format in which we expect to
+      find IP addresses: XXX.XXX.XXX.XXX, where each byte is a positive integer
+      between 0 and 255.
+    </div>
+    <div class="heading">Destination</div>
+    <div class="paragraph">
+      Ditto to above, except applying to the destination address.
+    </div>
+    <div class="heading">Protocol</div>
+    <div class="paragraph">
+      This refers to the protocol the packet uses for transport. In this case,
+      we have TCP (Transmission Control Protocol). TCP is a reliable protocol,
+      meaning that the sender is notified when the packet is received. The other
+      transport protocol taught in the Network+ curriculum is UDP (User Datagram
+      Protocol). Glancing at the Wireshark logs, I can also see TLS, SSDP and
+      IGMP protocols. (Transport Layer Security, Simple Service Discovery
+      Protocol and Internet Group Management Protocol, respectively.)
+    </div>
+    <div class="heading">Length</div>
+    <div class="paragraph">
+      The `length' refers to the number of bytes of the frame captured, in this
+      case 60. The frame is the length of the payload of the packet. This does
+      not represent all the data contained in the entire packet, as things such
+      as encryption and headers will add to the total amount of data in the
+      packet.
+    </div>
+    <div class="heading">Info</div>
+    <div class="paragraph">
+      This column was, for me, the most difficult to decipher. The `info' reads:
+    </div>
+    <pre class="green">
+      <code class="HTML">
+        443 -&gt; 49876 [ACK] Seq=1 Ack=1 Win=15872 Len=0
+      </code>
+    </pre>
+    <div class="paragraph">
+      The first two numbers are ports - this is evident from the 443 port, which
+      is well-known (HTTPS). I had not seen 49876, but a quick speedguide did
+      not have this port listed.
+    </div>
+    <div class="paragraph">
+      [ACK] refers to the second flag in the TCP handshake process whereby a
+      device aknowleges a [SYN] flag requesting the establishment of a
+      connection to a server. This is also tied to Seq = 1 : if we start
+      counting from 0, SYN is the 0th step in the TCP handshake sequence, ACK is
+      the 1st.
+    </div>
+    <div class="paragraph">
+      Ack = 176 refers to the 176th ACK number in the relative ACK sequence.
+    </div>
+    <div class="paragraph">
+      Win = 15872 refers to the calculated window size. This is the amount of
+      data (in bytes) that can be received in a buffered connection.
+    </div>
+    <div class="paragraph">
+      Len = 0 means that the packet had no payload. One device was merely
+      informing another about something. In this case, sending through an ACK.
+    </div>
+    <div class="heading">Inference</div>
+    <div class="paragraph">
+      From this we can infer the packet captured was an exchanging of an ACK
+      flag to initiate a connection. There was no payload for the packet. The
+      source port was 443, the HTTPS port. The destination port was an unknown
+      open port on the host device.
+    </div>
+    <div class="paragraph">
+      It is rather frightening, incredible, exciting and a little terrifying the
+      amount of information available on each packet of information that passes
+      through a network.
+    </div>
+    
+    <!-- Footer Section -->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__link--wrapper">
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__link--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/">How it works</a>
+          <a href="/">Testimonials</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+          </div>
+          <p class="website__rights">NEXT 2020. All rights reserved</p>
+          <div class="social__icons">
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="/" class="social__icon--link" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
