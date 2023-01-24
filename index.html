@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tom Montgomery's Blog</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/d996efb836.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo"><i class="fas fa-gem"></i>  TM</a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <!--<li class="navbar__item">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tom Montgomery's Blog</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script
+			src="https://kit.fontawesome.com/d996efb836.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar__container">
+				<a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+				<div class="navbar__toggle" id="mobile-menu">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</div>
+				<ul class="navbar__menu">
+					<label class="top">
+						Type any word:
+						<input type="text" id="name-input" onkeyup="checkEnter(event)"></label>
+					<!--<li class="navbar__item">
                     <a href="/" class="navbar__links">
                         Code
                     </a>
@@ -29,56 +40,71 @@
                         Cyber Security
                     </a>
                 </li>-->
-                <li class="navbar__bt">
-                    <a href="/weatherapp.html" class="button">Latest Post</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+					<!--<li class="navbar__bt">
+						<a class="button"><input type="button"></input>  Type word here...      </a>
+					</li>-->
+				</ul>
+			</div>
+		</nav>
 
-    <div class="main">
-        <div class="main__container">
-            <div class="main__content">
-                <h1>Tom Montgomery's</h1>
-                <h2>Personal Blog</h2>
-                <p>A collection of writings on coding and cyber security.</p>
-                <button class = "main__btn"><a href="/weatherapp.html">Latest Post</a></button>
-            </div>
-            <div class="main__img--container">
-               <img src="images/caricature.png" alt="pic" id="main__img"> 
-            </div>
-        </div>
-    </div>
+		<div class="main">
+			<div class="main__container">
+				<div class="main__content">
+					<h1>Tom Montgomery's</h1>
+					<h2>Personal Blog</h2>
+					<p>A collection of writings on coding and cyber security.</p>
+					<ul id="colour-change">
+						<li id="word">This website was created myself using HTML, Javascript and CSS.</li>
+					</ul>
+					<!--<button class = "main__btn"><a href="/weatherapp.html">Latest Post</a></button>-->
+				</div>
+				<div class="main__img--container">
+					<img src="images/caricature.png" alt="pic" id="main__img" />
+				</div>
+			</div>
+		</div>
 
-    <!-- Services Section -->
-    <div class="services">
-        <h1>Blog Posts</h1>
-        <div class="services__container">
-            <div href="/intro-API.html" class="services__card">
-                <a href="/intro-api.html"></a>
-                <h2>What is an API</h2>
-                <p>An introduction to the Application Programming Interface</p>
-                <button><a href="/intro-API.html">Read</a></button>
-            </div>
-            <div href="/" class="services__card">
-                <h2>An Introduction to Metasploit</h2>
-                <p>A look into the world of malware</p>
-                <button><a href="/intro-metasploit.html">Read</a></button>
-            </div>
-            <div href="/" class="services__card">
-                <h2>Wireshark Packet Capture</h2>
-                <p>A first hack at Networking</p>
-                <button><a href="/wireshark.html">Read</a></button>
-            </div>
-            <div href="/" class="services__card">
-                <h2>Cartons</h2>
-                <p>Algorithms and milk</p>
-                <button><a href="/cartons.html">Read</a></button>
-            </div>
-        </div>
-    </div>
+		<!-- Services Section -->
+		<div class="services">
+			<h1>Blog Posts</h1>
+			<div class="services__container">
+				<div href="/weatherapp.html" class="services__card">
+					<a href="/weatherapp.html"></a>
+					<h2>Word Search</h2>
+					<p>Getting an API call onto my website!</p>
+					<button><a href="/word-search.html">Read</a></button>
+				</div>
+				<div href="/weatherapp.html" class="services__card">
+					<a href="/weatherapp.html"></a>
+					<h2>Weather App</h2>
+					<p>An example of an API in a web app</p>
+					<button><a href="/weatherapp.html">Read</a></button>
+				</div>
+				<div href="/intro-API.html" class="services__card">
+					<a href="/intro-api.html"></a>
+					<h2>What is an API</h2>
+					<p>An introduction to the Application Programming Interface</p>
+					<button><a href="/intro-API.html">Read</a></button>
+				</div>
+				<div href="/" class="services__card">
+					<h2>An Introduction to Metasploit</h2>
+					<p>A look into the world of malware</p>
+					<button><a href="/intro-metasploit.html">Read</a></button>
+				</div>
+				<div href="/" class="services__card">
+					<h2>Wireshark Packet Capture</h2>
+					<p>A first hack at Networking</p>
+					<button><a href="/wireshark.html">Read</a></button>
+				</div>
+				<div href="/" class="services__card">
+					<h2>Cartons</h2>
+					<p>Algorithms and milk</p>
+					<button><a href="/cartons.html">Read</a></button>
+				</div>
+			</div>
+		</div>
 
-    <!-- Footer Section 
+		<!-- Footer Section 
     <div class="footer__container">
         <div class="footer__links">
             <div class="footer__link--wrapper">
@@ -147,6 +173,6 @@
             </div>
         </div>
     </div> -->
-    <script src = 'app.js'></script>
-</body>
+		<script src="app.js"></script>
+	</body>
 </html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Word Search</title>
+		<link rel="stylesheet" href="post-styles.css" />
+		<script
+			src="https://kit.fontawesome.com/d996efb836.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="navbar__container">
+				<a href="/" id="navbar__logo"><i class="fas fa-gem"></i> TM</a>
+				<div class="navbar__toggle" id="mobile-menu">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</div>
+				<ul class="navbar__menu">
+					<li class="navbar__item">
+						<a href="/" class="navbar__links"> Code </a>
+					</li>
+					<li class="navbar__item">
+						<a href="/tech.html" class="navbar__links"> Cyber Security </a>
+					</li>
+					<li class="navbar__bt">
+						<a href="/" class="button">Latest Post</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main">
+			<div class="main__container">
+				<div class="main__content">
+					<h1>Word Search</h1>
+					<p>Getting an API call onto my website!</p>
+				</div>
+				<div class="main__img--container">
+					<img src="images/caricature.png" alt="pic" id="main__img" />
+				</div>
+			</div>
+		</div>
+
+		<!-- Services Section -->
+		<div class="paragraph">
+			As the reader would be able to tell from my recent blog posts, I have
+			delved into frontend development recently. It has been great learning
+			Javascript, HTML and CSS. What has been particularly exciting (and
+			challenging) is figuring out how these three languages interact with one
+			another.
+		</div>
+		<div class="paragraph">
+			I have had to come to the realisation that they are not three seperate
+			languages - they are inextricably linked and thinking of them as such is
+			helpful in the development process.
+		</div>
+		<div class="heading">The Project</div>
+		<div class="paragraph">
+			I decided to create a search box on my website which allowed the user to
+			input a word. This word then uses the 'Words API' API to find the
+			definition of the word and display it on the website.
+		</div>
+		<div class="paragraph">
+			This functionality is fairly simple but it does a few things which I think
+			are really cool:
+		</div>
+		<div class="paragraph">
+			> It makes an API call. I was eager to test my ability to code this up in
+			Javascript
+		</div>
+		<div class="paragraph">
+			> It requires user input. This allows me to code something dynamic.
+		</div>
+		<div class="paragraph">
+			> It appears on my website. This is an interesting, practical way of
+			demonstrating the skills I acquire while also making the blog a little
+			more fun!
+		</div>
+		<div class="heading">The API call</div>
+		<div class="paragraph">
+			I have coded up projects with an API before and I find them a little bit
+			daunting. The logic of the 'fetch' function left me a bit stumped. The
+			only way to overcome this fear is to tackle it head-on.
+		</div>
+		<pre class="green">
+      <code class="js">
+        function getWord(word) {
+          let api = `https://wordsapiv1.p.rapidapi.com/words/${word}/definitions`;
+        
+          fetch(api, options)
+            .then(function (response) {
+              let data = response.json();
+              return data;
+            })
+            .then(function (data) {
+              //console.log(data.definitions[0].definition);
+              /*for (item in data) {
+              console.log(item);
+            }*/
+        
+              let test1 = data.definitions[0].definition;
+              return test1;
+            })
+            .then(function (test1) {
+              wordObj.def = test1;
+            })
+            .then(function () {
+              changeHTML();
+            })
+            .catch(function (err) {
+              console.error(err);
+            });
+        }
+    </code>
+    </pre>
+		<div class="paragraph">
+			The 'fetch' function is what allows us to access the 'Words' API. The
+			'.then' function basically seems to nest functions, allowing us to retain
+			data. In this case, we retrieve the information from the API and store it
+			as a JSON file. This data is then passed to another function which stores
+			what we need from the API - namely, the word's definition. Once this is
+			done, we run a function to update the HTML in order for the webpage to
+			refresh.
+		</div>
+		<div class="heading">Altering HTML</div>
+		<div class="paragraph">
+			I'm not sure what makes me more excited - using the API or using
+			JavaScript to update the HTML. It might seem simple but as someone with
+			little frontend experience I find the interaction with all the languages
+			fascinating.
+		</div>
+		<pre class="green">
+      <code class="js">
+        function changeHTML() {
+          wordDef.innerHTML = `${wordObj.input}: ${wordObj.def}`;
+          document.getElementById("word").style.color = "#fff";
+          document.getElementById("word").style.backgroundColor = "#498f61";
+        }
+    </code>
+    </pre>
+		<div class="paragraph">
+			changeHTML() does what it says on the tin. The first line of the function
+			updates the actual text using the innerHTML function. Notice that this
+			data is the data we pulled from the 'Words' API.
+		</div>
+		<div class="paragraph">
+			I then update the color of the text. This is simply to let the user know
+			that their page has updated.
+		</div>
+		<div class="heading">Allowing user input</div>
+		<div class="paragraph">
+			The final element required would be to allow the user to input a word.
+			This ended up being simpler than I thought it would be.
+		</div>
+		<pre class="green">
+      <code class="js">
+        function checkEnter(event) {
+          if (event.keyCode == 13) {
+            let word = document.getElementById("name-input").value;
+            wordObj.input = word;
+            getWord(wordObj.input);
+          }
+        }        
+    </code>
+    </pre>
+		<div class="paragraph">
+			We simply have a function which checks to see whether the 'enter' key has
+			been pressed. If it has, the function takes in the inputted text and runs
+			our getWord() function from earlier in order to update the page with the
+			word's definition
+		</div>
+		<div class="heading">Conclusion</div>
+		<div class="paragraph">
+			Ultimately, this project was about demonstrating my ability to create
+			something using Javascript and HTML. This was a learning experience for me
+			and a chance to cut my teeth with the languages, particularly in making an
+			API call. I also learned about user input and updating an HTML document
+			from a Javascript script.
+		</div>
+
+		<!-- Footer Section 
+		<div class="footer__container">
+			<div class="footer__links">
+				<div class="footer__link--wrapper">
+					<div class="footer__link--items">
+						<h2>About Us</h2>
+						<a href="/">How it works</a>
+						<a href="/">Testimonials</a>
+						<a href="/">Careers</a>
+						<a href="/">Investments</a>
+						<a href="/">Terms of Service</a>
+					</div>
+					<div class="footer__link--items">
+						<h2>About Us</h2>
+						<a href="/">How it works</a>
+						<a href="/">Testimonials</a>
+						<a href="/">Careers</a>
+						<a href="/">Investments</a>
+						<a href="/">Terms of Service</a>
+					</div>
+				</div>
+				<div class="footer__link--items">
+					<h2>About Us</h2>
+					<a href="/">How it works</a>
+					<a href="/">Testimonials</a>
+					<a href="/">Careers</a>
+					<a href="/">Investments</a>
+					<a href="/">Terms of Service</a>
+				</div>
+				<div class="footer__link--items">
+					<h2>About Us</h2>
+					<a href="/">How it works</a>
+					<a href="/">Testimonials</a>
+					<a href="/">Careers</a>
+					<a href="/">Investments</a>
+					<a href="/">Terms of Service</a>
+				</div>
+			</div>
+			<div class="social__media">
+				<div class="social__media--wrap">
+					<div class="footer__logo">
+						<a href="/" id="footer__logo"><i class="fas fa-gem"></i>NEXT</a>
+					</div>
+					<p class="website__rights">NEXT 2020. All rights reserved</p>
+					<div class="social__icons">
+						<a href="/" class="social__icon--link" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href="/" class="social__icon--link" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href="/" class="social__icon--link" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href="/" class="social__icon--link" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href="/" class="social__icon--link" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<script src="app.js"></script>
+	</body>
+</html>
