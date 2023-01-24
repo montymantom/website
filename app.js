@@ -5,7 +5,7 @@ let word = wordObj.input;
 const options = {
 	method: "GET",
 	headers: {
-		"X-RapidAPI-Key": "ff3876428fmsh544ea95f5c15913p19f4a0jsnf3b743c34e17",
+		"X-RapidAPI-Key": "INSERT KEY",
 		"X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
 	},
 };
